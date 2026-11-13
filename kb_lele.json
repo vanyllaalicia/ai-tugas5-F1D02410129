@@ -1,0 +1,67 @@
+
+{
+  "sumber": {
+    "S1": "Kementerian Kelautan dan Perikanan. Laporan Kinerja BPBL Ambon 2025. https://ppid.kkp.go.id/media/uploads/document_information_public/LKJ_BPBL_Ambon_2025_reviu_kedua_compressed.pdf",
+    "S2": "Kentucky State University. Desirable Water Quality Parameters for Catfish Ponds. https://aquaculture.mgcafe.uky.edu/sites/aquaculture.ca.uky.edu/files/desirable-water-quality-parameters-for-catfish-ponds.pdf",
+    "S3": "Adeosun, Olaifa, dan Akande (2017). Seasonal Variations in Selected Physico-Chemical Parameters of Culture Systems Used in Raising African Catfish, Clarias gariepinus. https://www.aquapublisher.com/index.php/ija/article/html/2542/",
+    "S4": "Prosiding Seminar Nasional Perikanan Indonesia ke-26, Kementerian Kelautan dan Perikanan. https://ejournal-balitbang.kkp.go.id/index.php/psnp/article/viewFile/18479/10101"
+  },
+  "aturan": [
+    {
+      "id": "R1",
+      "deskripsi": "Jika kadar oksigen terlarut rendah, maka oksigen dalam air tergolong rendah.",
+      "kondisi": ["do_rendah"],
+      "mode": "dan",
+      "kesimpulan": "oksigen_rendah",
+      "sumber": ["S2"]
+    },
+    {
+      "id": "R2",
+      "deskripsi": "Jika oksigen rendah dan ikan sering muncul di permukaan, maka terdapat indikasi kekurangan oksigen.",
+      "kondisi": ["oksigen_rendah", "ikan_di_permukaan"],
+      "mode": "dan",
+      "kesimpulan": "indikasi_kekurangan_oksigen",
+      "sumber": ["S2"]
+    },
+    {
+      "id": "R3",
+      "deskripsi": "Jika pH berada di luar rentang 6,5 sampai 8,8, maka pH air tidak ideal.",
+      "kondisi": ["ph_di_luar_rentang"],
+      "mode": "dan",
+      "kesimpulan": "pH_tidak_ideal",
+      "sumber": ["S4"]
+    },
+    {
+      "id": "R4",
+      "deskripsi": "Jika suhu berada di luar rentang 27 sampai 30 derajat Celsius, maka suhu air tidak ideal.",
+      "kondisi": ["suhu_di_luar_rentang"],
+      "mode": "dan",
+      "kesimpulan": "suhu_tidak_ideal",
+      "sumber": ["S1"]
+    },
+    {
+      "id": "R5",
+      "deskripsi": "Jika oksigen rendah atau pH tidak ideal atau suhu tidak ideal, maka kualitas air perlu diperhatikan.",
+      "kondisi": ["oksigen_rendah", "pH_tidak_ideal", "suhu_tidak_ideal"],
+      "mode": "atau",
+      "kesimpulan": "kualitas_air_perlu_perhatian",
+      "sumber": ["S1", "S2", "S4"]
+    },
+    {
+      "id": "R6",
+      "deskripsi": "Jika kualitas air perlu diperhatikan dan ikan sering muncul di permukaan, maka terdapat indikasi risiko stres pada ikan.",
+      "kondisi": ["kualitas_air_perlu_perhatian", "ikan_di_permukaan"],
+      "mode": "dan",
+      "kesimpulan": "indikasi_risiko_stres_ikan",
+      "sumber": ["S2", "S3"]
+    },
+    {
+      "id": "R7",
+      "deskripsi": "Jika oksigen rendah dan suhu tidak ideal, maka terdapat beberapa parameter kualitas air yang menyimpang.",
+      "kondisi": ["oksigen_rendah", "suhu_tidak_ideal"],
+      "mode": "dan",
+      "kesimpulan": "beberapa_parameter_menyimpang",
+      "sumber": ["S1", "S2"]
+    }
+  ]
+}
